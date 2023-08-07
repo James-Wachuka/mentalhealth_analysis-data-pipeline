@@ -1,0 +1,10 @@
+bin/
+include/
+lib/
+pyvenv.cfg
+terraform/mental-health-analysis-iam.json
+kaggle.json
+mental-health-data.zip
+mental-heathdata.csv
+ingest.py
+requirements.txt

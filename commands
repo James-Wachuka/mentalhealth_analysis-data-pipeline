@@ -1,0 +1,59 @@
+# download and setup terraform
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+
+# set credentials for gcp
+export GOOGLE_APPLICATION_CREDENTIALS="mental-health-analysis-iam.json"
+
+# Refresh token/session, and verify authentication
+gcloud auth application-default login
+
+
+
+# Initialize state file (.tfstate)
+terraform init
+
+# Check changes to new infra plan
+terraform plan -var="project=<your-gcp-project-id>"
+
+terraform plan -var="project=mental-health-analysis-395019"
+
+# Create new infra
+terraform apply -var="project=<your-gcp-project-id>"
+
+terraform apply -var="project=mental-health-analysis-395019"
+
+# Delete infra after your work, to avoid costs on any running services
+terraform destroy
+
+
+# setting up prefect 
+install these libraries
+pandas==1.5.2
+prefect==2.7.7
+prefect-sqlalchemy==0.2.2
+prefect-gcp[cloud_storage]==0.2.4
+protobuf==4.21.11
+pyarrow==10.0.1
+pandas-gbq==0.18.1
+psycopg2-binary==2.9.5
+sqlalchemy==1.4.46
+kaggle
+prefect[orion]
+
+
+# setup kaggle api access
+mv kaggle.json /home/james23/.kaggle/kaggle.json
+
+# start prefect orion server
+prefect server start
+
+# register your custom block
+prefect block register --file my_block.py
+
+# run your flows 
+python3 ./prefect/flows/data_to_gcs.py
+
+python3 ./prefect/flows/gcs_to_bq.py
+
