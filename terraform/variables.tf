@@ -28,3 +28,5 @@ variable "BQ_DATASET_2" {
   type = string
   default = "mentalhealth_prod"
 }
+
+
