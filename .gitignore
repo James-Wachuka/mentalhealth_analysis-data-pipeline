@@ -9,3 +9,9 @@ mental-health-data.zip
 mental-heathdata.csv
 ingest.py
 requirements.txt
+
+# Default .gitignore content added by dbt Cloud
+target/
+dbt_packages/
+logs/
+# end dbt Cloud content

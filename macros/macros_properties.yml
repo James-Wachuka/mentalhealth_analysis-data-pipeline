@@ -1,0 +1,9 @@
+version: 2
+
+macros:
+  - name: get_gender_properties
+    description: >
+      This macro receives gender types an returns three categories
+    arguments:
+      - name: Gender
+        description: gender type

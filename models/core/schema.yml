@@ -1,0 +1,56 @@
+
+version: 2
+sources:
+    - name: mentalhealth_staging
+     #forbigquery:
+     #database: mental-health-analysis-395019
+
+
+      # loaded_at_field: record_loaded_at
+      tables:
+        - name: stag_mentalhealth_data
+         # freshness:
+           # error_after: {count: 6, period: hour}
+
+models:
+    - name: dim_employee
+      description: dimension table for employee 
+      columns:
+        - name: unique_id
+        - name: Age
+        - name: gender_type
+        - name: Country
+        - name: state
+        - name: remote_work
+        - name: tech_company
+
+    - name: dim_mentalhealth
+      description: dimension table for mental health factors
+      columns:
+        - name: unique_id
+        - name: family_history
+        - name: treatment
+        - name: work_interfere
+        - name: no_employees
+        - name: benefits
+        - name: care_options 
+        - name: wellness_program
+        - name: seek_help
+        - name: anonymity
+        - name: leave
+    
+    - name: fact_mentalhealth
+      description: fact table for mental health
+      columns:
+        - name: unique_id
+        - name: mental_health_consequence
+        - name: phys_health_consequence 
+        - name: coworkers 
+        - name: supervisor
+        - name: mental_health_interview 
+        - name: phys_health_interview
+        - name: mental_vs_physical
+        - name: obs_consequence
+
+
+
