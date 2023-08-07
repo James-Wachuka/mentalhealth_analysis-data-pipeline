@@ -11,8 +11,8 @@ An end to end data pipeline built using  python, prefect, gcp, dbt cloud
 - dbt cloud
 - terraform
 
--setup a python venv and install the required packages
-Python packages: install the required packages using the [requirements file](requirements.txt)
+Setup a python venv and install the required packages
+- Python packages: install the required packages using the [requirements file](requirements.txt)
 
 ## CREATING INFRA ON GCP USING TERRAFORM
 - Configure gcloud sdk on your machine and setup terrraform
@@ -39,14 +39,13 @@ terraform plan -var="project=<your-gcp-project-id>"
 terraform apply -var="project=<your-gcp-project-id>"
 
 ```
-- configure [variables.tf](/terraform/variables.tf) and 9[main.tf](./terraform/main.tf)
- before running plan and apply commands
-![terraform-ouput](/images/terraform-1.PNG)
+- configure [variables.tf](/terraform/variables.tf) and [main.tf](./terraform/main.tf) before running plan and apply commands
+![terraform-ouput](./Images/terraform-1.PNG)
 
 ## RUNNING PREFECT FLOWS
 - Create a prefect directory and inside add flows and blocks folders
-- start prefect server 
-- setup kaggle access
+- Start prefect server 
+- Setup kaggle access
 ```python
 # setup kaggle api access
 mv kaggle.json /home/james23/.kaggle/kaggle.json
@@ -75,17 +74,17 @@ python3 ./prefect/flows/gcs_to_bq.py
 - create and configure [dbt_project.yml](dbt_project.yml), macros and models accordingly
 - run the builds in developer mode
 
--- example of macros [get_gender_properties.sql](./macros/get_gender_properties.sql)
+Example of macros [get_gender_properties.sql](./macros/get_gender_properties.sql)
 
---example of staging-moudules(for development) [stag_mentalhealth_data.sql](./models/staging/stag_mentalhealth_data.sql)
---example of core models(for production) [dim_employee.sql](/models/core/dim_employee.sql)
+Example of staging-moudules(for development) [stag_mentalhealth_data.sql](./models/staging/stag_mentalhealth_data.sql)
 
-**IMPORTANT: configure the development env with the correct target database/dataset for bigquery
+Example of core models(for production) [dim_employee.sql](/models/core/dim_employee.sql)
+
+- IMPORTANT: configure the development env with the correct target database/dataset for bigquery
 ![dbt-builds](./Images/dbt-builds.PNG)
 
 ## ADDING A DEPLOY ENVIRONMENT ON DBT CLOUD
 - This evironment runs jobs for loading data into production tables
-
 - set up the deployment enviroment
 - add job runs and schedule them
 ![deployment env](./Images/dbt-deploy.PNG)
@@ -93,17 +92,17 @@ python3 ./prefect/flows/gcs_to_bq.py
 ## VISUALIZING THE DATA
 - looker studio is used to build the dashboard for analysis
 
---link looker-dashboard of [mental health analysis](https://lookerstudio.google.com/reporting/5b1d13dd-db9b-4260-92aa-7157a061eb95)
+link looker-dashboard of [mental health analysis](https://lookerstudio.google.com/reporting/5b1d13dd-db9b-4260-92aa-7157a061eb95)
 
 
-**IMPORTANT: configure the deployment env with the correct target database/dataset for bigquery
+- IMPORTANT: configure the deployment env with the correct target database/dataset for bigquery
 
 ## NEXT STEPS
 You can customize this project in the following ways.
 
 - Run the flows in prefect cloud
 
-- enhance deployment by adding triggers (eg. on pull request )
+- Enhance deployment by adding triggers (eg. on pull request )
 
 ## CONTRIBUTING
 
