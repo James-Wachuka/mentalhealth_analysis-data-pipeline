@@ -76,7 +76,7 @@ python3 ./prefect/flows/gcs_to_bq.py
 
 Example of macros [get_gender_properties.sql](./macros/get_gender_properties.sql)
 
-Example of staging-moudules(for development) [stag_mentalhealth_data.sql](./models/staging/stag_mentalhealth_data.sql)
+Example of staging-models(for development) [stag_mentalhealth_data.sql](./models/staging/stag_mentalhealth_data.sql)
 
 Example of core models(for production) [dim_employee.sql](/models/core/dim_employee.sql)
 
