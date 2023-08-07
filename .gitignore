@@ -8,8 +8,7 @@ kaggle.json
 mental-health-data.zip
 mental-heathdata.csv
 ingest.py
-requirements.txt
-
+commands
 # Default .gitignore content added by dbt Cloud
 target/
 dbt_packages/
