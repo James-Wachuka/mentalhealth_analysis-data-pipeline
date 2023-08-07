@@ -3,6 +3,7 @@ include/
 lib/
 pyvenv.cfg
 terraform/mental-health-analysis-iam.json
+mental-health-analysis-iam.json
 kaggle.json
 mental-health-data.zip
 mental-heathdata.csv
